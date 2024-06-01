@@ -43,50 +43,20 @@ public class CalculatorTest {
 
     @Test
     public void additionWorks() {
-//        Random randomizer = new Random();
-//        double term1 = randomizer.nextInt(100);
-//        System.out.println(term1);
-//        double term2 = randomizer.nextInt(100);
-//        System.out.println(term2);
-//        double term3 = randomizer.nextInt(100);
-//        System.out.println(term3);
-        Assertions.assertEquals((10000+200), Calculator.calculateDistance("10m+20cm", Unit.mm));
+        Assertions.assertEquals((10200), Calculator.calculateDistance("10m+20cm", Unit.mm));
+    }
+    @Test
+    public void additionAndSubtractionWorks() {
+        Assertions.assertEquals((9), Calculator.calculateDistance("-1m+10m-200cm-1m+3m", Unit.m));
     }
     @Test
     public void subtractionWorks() {
-//        Random randomizer = new Random();
-//        double term1 = randomizer.nextInt(100);
-//        System.out.println(term1);
-//        double term2 = randomizer.nextInt(100);
-//        System.out.println(term2);
-//        double term3 = randomizer.nextInt(100);
-//        System.out.println(term3);
-        Assertions.assertEquals((-20+200), Calculator.calculateDistance("-20mm+20cm", Unit.mm));
+        Assertions.assertEquals((18), Calculator.calculateDistance("-20mm+20cm", Unit.cm));
     }
     @ParameterizedTest
-    @CsvSource({"10m+20cm, Unit.mm, 10200", "10m+20m, Unit.mm, 30000"})
+    @CsvSource({"10m+20cm", "10200", "10m+20m", "30000"})
     public void parameterizedAdditionWorks(String expression, Unit unit, double result){
-        Assertions.assertEquals(result, Calculator.calculateDistance(expression, unit));
+        Assertions.assertEquals(result, Calculator.calculateDistance(expression, Unit.mm));
     }
 
-
-//
-//    @Test
-//    // @Disabled
-//    public void substractionWorks(){
-//        Random randomizer = new Random();
-//        int term1 = randomizer.nextInt(50);
-//        int term2 = randomizer.nextInt(50);
-//        Assertions.assertEquals(term1 - term2, Calculator.substraction(term1,term2));
-//    }
-//
-//    @Test
-//    public void addNamesWorks(){
-//        String[] initNames = {"Marcel", "Irina"};
-//
-//        List<String> calculatedNames = Calculator.addNames(initNames);
-//
-//        Assertions.assertTrue(calculatedNames.contains("Ana"));
-//        Assertions.assertTrue(calculatedNames.containsAll(Arrays.asList(initNames)));
-//    }
 }

@@ -44,27 +44,24 @@ public class Calculator {
         while (matcher.find()){
             for (int i=1; i<=3; i++) {
                 listOfComputations.add(matcher.group(i));
-                System.out.println(matcher.group(i));
+                //System.out.println(matcher.group(i));
             }
         }
-        System.out.println(listOfComputations);
+        //System.out.println(listOfComputations);
         double value=0;
-        for (int i=0; i<listOfComputations.size()-3; i++){
+        for (int i=0; i<=listOfComputations.size()-3; i++){
             if(listOfComputations.get(i).equals("+")){
-             value+=Double.parseDouble(listOfComputations.get(i+1))*Double.parseDouble(Unit.valueOf(listOfComputations.get(i+2));
+             Unit unit1 = Unit.valueOf(listOfComputations.get(i+2));
+             value+=Double.parseDouble(listOfComputations.get(i+1))*(unit1.getValue());
             }
-
+            if(listOfComputations.get(i).equals("-")) {
+                Unit unit1 = Unit.valueOf(listOfComputations.get(i+2));
+                value-=Double.parseDouble(listOfComputations.get(i+1))*(unit1.getValue());
+            }
         }
-
-
-
-
-
-
-        // my
-        System.out.println("Expression= "+ expression);
-        System.out.println("Unit= "+unit);
-        return 0.0;
+        value/= unit.getValue();
+       // System.out.println(value);
+        return value;
     }
 }
 

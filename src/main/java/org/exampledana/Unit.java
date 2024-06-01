@@ -11,4 +11,8 @@ public enum Unit {
     Unit(int value) {
         this.value = value;
     }
+
+    public int getValue() {
+        return value;
+    }
 }
